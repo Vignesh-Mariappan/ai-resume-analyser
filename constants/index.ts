@@ -140,7 +140,6 @@ export const resumes: Resume[] = [
   export const prepareInstructions = ({
     jobTitle,
     jobDescription,
-    AIResponseFormat,
   }: {
     jobTitle: string;
     jobDescription: string;
