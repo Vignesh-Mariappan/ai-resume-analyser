@@ -40,8 +40,6 @@ const upload = () => {
         setStatusText('Converting to image....');
         const imageFile = await convertPdfToImage(file);
 
-        console.log('imageFile ', imageFile)
-
         if (!imageFile.file) {
             setStatusText('Error: Failed to convert the file into image');
             return;
@@ -75,7 +73,6 @@ const upload = () => {
 
         setStatusText('Analysing...');
 
-
         // get the feedback of the resume using puter's ai chat 
         const feedback = await ai.feedback(
             uploadedFile.path,
@@ -89,8 +86,6 @@ const upload = () => {
             return setStatusText('Error: Failed to analyze resume');
         }
 
-        console.log('feedback ', feedback);
-
         const feedbackText = typeof feedback.message.content === 'string' ? feedback.message.content : feedback.message.content[0].text;
         data.feedback = JSON.parse(feedbackText);
 
@@ -102,7 +97,7 @@ const upload = () => {
 
         // setIsProcessing(false);
 
-        // navigate(`/resume/${uuid}`);
+        navigate(`/resume/${uuid}`);
     }
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
